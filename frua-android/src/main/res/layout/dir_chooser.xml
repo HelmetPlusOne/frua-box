@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <EditText android:id="@+id/dir_list_chosen"
+              android:drawableLeft="@drawable/ic_menu_set_as"
+              android:editable="false"
+              android:focusable="false"
+              android:ellipsize="start"
+              android:singleLine="true"
+              android:cursorVisible="false"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:defaultValue=""/>
+    <ListView android:id="@+id/dir_list"
+              android:paddingLeft="5sp"
+              android:paddingRight="5sp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"/>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <Button android:id="@+id/dir_list_cancel"
+                android:text="@string/pref_frua_directory_dialog_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        <Button android:id="@+id/dir_list_ok"
+                android:text="@string/pref_frua_directory_dialog_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>
+

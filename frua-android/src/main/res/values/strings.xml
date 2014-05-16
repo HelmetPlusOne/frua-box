@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FRUA Box</string>
+    <string name="settings_activity_label">FRUA Box Settings</string>
+    <!-- settings -->
+    <!-- skip on start -->
+    <string name="pref_skip_settings_on_start_key">pref_skip_settings_on_start_key</string>
+    <string name="pref_skip_settings_on_start_title">Skip Settings Screen</string>
+    <string name="pref_skip_settings_on_start_summary">Do Not Show Settings Screen on Startup</string>
+    <!-- frua settings-->
+    <string name="pref_frua_settings_key">pref_frua_settings_key</string>
+    <string name="pref_frua_settings_title">FRUA Installation Settings</string>
+    <string name="pref_frua_directory_key">pref_frua_directory_key</string>
+    <string name="pref_frua_directory_title">FRUA Directory</string>
+    <string name="pref_frua_directory_dialog_title">Choose FRUA Directory</string>
+    <string name="pref_frua_directory_dialog_ok">Choose</string>
+    <string name="pref_frua_directory_dialog_cancel">Cancel</string>
+    <string name="pref_frua_directory_dialog_alert">Chosen directory: [${fruadir}] does not contain FRUA files</string>
+    <string name="pref_frua_directory_dialog_alert_ok">Dismiss</string>
+    <string name="pref_frua_directory_dialog_error">Cannot read directory: [${fruadir}]</string>
+    <string name="pref_frua_installed_state_key">pref_frua_installed_state_key</string>
+    <string name="pref_frua_active_module_key">pref_frua_active_module_key</string>
+    <string name="pref_frua_active_module_title">Current Active Module</string>
+    <!-- audio/video settings -->
+    <string name="pref_audio_video_key">pref_audio_video_key</string>
+    <string name="pref_audio_video_title">Audio/Video Settings</string>
+    <string name="pref_audio_enabled_key">pref_audio_enabled_key</string>
+    <string name="pref_audio_enabled_title">Audio Enabled</string>
+    <string name="pref_audio_enabled_summary">Enable in-game sounds and music</string>
+    <string name="pref_smooth_video_key">pref_smooth_video_key</string>
+    <string name="pref_smooth_video_title">Smooth Video</string>
+    <string name="pref_smooth_video_summary">Filter low-res graphics to make it look soapy</string>
+    <!-- performance settings -->
+    <string name="pref_performance_key">pref_performance_key</string>
+    <string name="pref_performance_title">Performance Settins</string>
+    <string name="pref_cpu_cycles_key">pref_cpu_cycles_key</string>
+    <string name="pref_cpu_cycles_title">CPU Cycles</string>
+    <string name="pref_frameskip_key">pref_frameskip_key</string>
+    <string name="pref_frameskip_title">Frameskip Count</string>
+    <!-- about -->
+    <string name="pref_about_key">pref_about_key</string>
+    <string name="pref_about_title">About</string>
+    <string name="pref_about_frua_key">pref_about_frua_key</string>
+    <string name="pref_about_frua_title">About FRUA</string>
+    <string name="pref_about_frua_summary">About Forgotten Realms Unlimited Adventures game by SSI</string>
+    <string name="pref_about_frua_link">https://en.wikipedia.org/wiki/Forgotten_Realms:_Unlimited_Adventures</string>
+    <string name="pref_about_this_app_key">pref_about_this_app_key</string>
+    <string name="pref_about_this_app_title">About This Application</string>
+    <string name="pref_about_this_app_summary">About This Android Application</string>
+    <string name="pref_about_this_app_link">https://github.com/helmetplusone/android-fruabox#frua-for-android</string>
+    <string name="pref_app_version_key">pref_app_version_key</string>
+    <string name="pref_app_version_title">Application Version</string>
+    <!-- action bar -->
+    <string name="menu_run">Run</string>
+    <string name="menu_install">Install from SD</string>
+    <string name="menu_install_condensed">Install</string>
+    <string name="menu_install_dialog_title">Choose FRUA Archive File</string>
+    <string name="menu_add_module">Add module from SD</string>
+    <string name="menu_add_module_condensed">Module</string>
+    <string name="menu_add_module_dialog_title">Choose Module ZIP File</string>
+    <string name="menu_download">Download FRUA</string>
+    <string name="menu_download_condensed">FRUA</string>
+    <string name="menu_download_link">http://www.google.com/search?q=forgotten+realms+unlimited+adventures+abandonware+download</string>
+    <string name="menu_download_dialog_warning">FRUA is an abandonware, downloading it may be illegal!</string>
+    <string name="menu_modules">Download Modules</string>
+    <string name="menu_modules_condensed">Modules</string>
+    <string name="menu_modules_link">http://frua.rosedragon.org/modulelist/file.php</string>
+    <string name="menu_modules_dialog_warning">Modules download page will be opened in web browser</string>
+    <string name="menu_docs">Download Manual</string>
+    <string name="menu_docs_condensed">Manual</string>
+    <string name="menu_docs_link">http://replacementdocs.com/download.php?view.1510</string>
+    <string name="menu_docs_dialog_warning">FRUA manual is a copyrighted material!</string>
+    <string name="menu_quit">Quit</string>
+    <!-- other -->
+    <string name="open_browser_button_text">Open Browser</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="dismiss_button_text">Dismiss</string>
+    <string name="error_title">Error</string>
+    <string name="install_error_text">Installation error:\n${text}</string>
+    <string name="install_successful_title">Finished</string>
+    <string name="install_successful_text">FRUA was successfully installed into directory: [${fruadir}]</string>
+    <string name="install_progress_message">Installing into: [${fruadir}], press "Back" to cancel installation</string>
+
+</resources>

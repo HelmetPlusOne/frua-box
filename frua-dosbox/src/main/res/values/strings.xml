@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FRUABox</string>
+    <string name="help">- Volume Up/Down is mapped to respective buttons in Mouse/Joystick mode.\n\n- Advanced user can edit /sdcard/dosbox.conf for customization. IMPORTANT: config file will override built-in settings (cycles, frameskip, memory size, etc.).</string>
+    <string name="acknowledge">The emulation part of the software is based on GPL source code of DOSBox 0.74 from DOSBox Team (available at www.dosbox.com).</string>
+    <string name="keymapper">Button Mapper</string>
+    <string name="scale_factor">Resize Factor</string>
+    <string name="mouse_sensitivity">Mouse Sensitivity</string>
+</resources>

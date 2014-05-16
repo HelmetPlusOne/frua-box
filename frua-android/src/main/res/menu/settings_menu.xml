@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_run"
+          android:icon="@drawable/ic_menu_play_clip"
+          android:title="@string/menu_run"
+          android:showAsAction="always|withText" />
+    <item android:id="@+id/menu_add_module"
+          android:icon="@drawable/ic_menu_add"
+          android:title="@string/menu_add_module"
+          android:titleCondensed="@string/menu_add_module_condensed"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_install"
+          android:icon="@drawable/ic_menu_archive"
+          android:title="@string/menu_install"
+          android:titleCondensed="@string/menu_install_condensed"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_download"
+          android:icon="@drawable/ic_menu_download"
+          android:title="@string/menu_download"
+          android:titleCondensed="@string/menu_download_condensed"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_modules"
+          android:icon="@drawable/ic_menu_download"
+          android:title="@string/menu_modules"
+          android:titleCondensed="@string/menu_modules_condensed"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_docs"
+          android:icon="@drawable/ic_menu_download"
+          android:title="@string/menu_docs"
+          android:titleCondensed="@string/menu_docs_condensed"
+          android:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/menu_quit"
+          android:icon="@drawable/ic_menu_close_clear_cancel"
+          android:title="@string/menu_quit"
+          android:showAsAction="always|withText"/>
+</menu>

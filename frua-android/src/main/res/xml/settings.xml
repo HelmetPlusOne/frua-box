@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- skip settings -->
+    <CheckBoxPreference android:key="@string/pref_skip_settings_on_start_key"
+                        android:title="@string/pref_skip_settings_on_start_title"
+                        android:summary="@string/pref_skip_settings_on_start_summary"
+                        android:defaultValue="false"/>
+    <!-- frua settings -->
+    <PreferenceCategory android:key="@string/pref_frua_settings_key"
+                        android:title="@string/pref_frua_settings_title">
+        <!--<com.helmetplusone.android.frua.FileChooserPreference-->
+                <!--android:key="@string/pref_frua_directory_key"-->
+                <!--android:title="@string/pref_frua_directory_title"-->
+                <!--android:dialogLayout="@layout/file_chooser"-->
+                <!--android:defaultValue=""/>-->
+        <Preference android:key="@string/pref_frua_directory_key"
+                    android:title="@string/pref_frua_directory_title"
+                    android:defaultValue=""/>
+        <Preference android:key="@string/pref_frua_active_module_key"
+                    android:title="@string/pref_frua_active_module_title"
+                    android:defaultValue=""/>
+    </PreferenceCategory>
+    <!-- audio/video settings -->
+    <PreferenceCategory android:key="@string/pref_audio_video_key"
+                        android:title="@string/pref_audio_video_title">
+        <CheckBoxPreference android:key="@string/pref_audio_enabled_key"
+                            android:title="@string/pref_audio_enabled_title"
+                            android:summary="@string/pref_audio_enabled_summary"
+                            android:defaultValue="true"/>
+        <CheckBoxPreference android:key="@string/pref_smooth_video_key"
+                            android:title="@string/pref_smooth_video_title"
+                            android:summary="@string/pref_smooth_video_summary"
+                            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <!-- performance settings -->
+    <PreferenceCategory android:key="@string/pref_performance_key"
+                        android:title="@string/pref_performance_title">
+        <ListPreference android:key="@string/pref_cpu_cycles_key"
+                        android:title="@string/pref_cpu_cycles_title"
+                        android:entries="@array/pref_cpu_cycles_array"
+                        android:entryValues="@array/pref_cpu_cycles_array"
+                        android:defaultValue="3000"/>
+        <ListPreference android:key="@string/pref_frameskip_key"
+                        android:title="@string/pref_frameskip_title"
+                        android:entries="@array/pref_frameskip_array"
+                        android:entryValues="@array/pref_frameskip_array"
+                        android:defaultValue="2"/>
+    </PreferenceCategory>
+    <!-- about -->
+    <PreferenceCategory android:key="@string/pref_about_key"
+                        android:title="@string/pref_about_title">
+        <Preference android:key="@string/pref_about_frua_key"
+                    android:title="@string/pref_about_frua_title"
+                    android:summary="@string/pref_about_frua_summary"
+                    android:defaultValue="">
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="@string/pref_about_frua_link"/>
+        </Preference>
+        <Preference android:key="@string/pref_about_this_app_key"
+                    android:title="@string/pref_about_this_app_title"
+                    android:summary="@string/pref_about_this_app_summary"
+                    android:defaultValue="">
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="@string/pref_about_this_app_link"/>
+        </Preference>
+        <Preference android:key="@string/pref_app_version_key"
+                    android:title="@string/pref_app_version_title"
+                    android:defaultValue=""/>
+    </PreferenceCategory>
+</PreferenceScreen>
