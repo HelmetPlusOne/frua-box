@@ -144,6 +144,11 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
             File confFile = new File(getExternalFilesDir(null), "fruabox.conf");
             writeStringToFile(confFile, conf);
             Intent intent = new Intent(this, DosBoxLauncher.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("cycles", getPrefInt(R.string.pref_cpu_cycles_key));
+            bundle.putInt("frameskip", getPrefInt(R.string.pref_frameskip_key));
+            bundle.putBoolean("sound", getPrefBool(R.string.pref_audio_enabled_key));
+            intent.putExtras(bundle);
             startActivityForResult(intent, 42);
         } catch (Exception e) {
             throw new UnhandledException(e);
@@ -191,6 +196,12 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         editor.commit();
         Preference pref = findPreference(key);
         pref.setSummary(val);
+    }
+
+    int getPrefInt(int keyId) {
+        String key = getResources().getString(keyId);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        return Integer.parseInt(sp.getAll().get(key).toString());
     }
 
     boolean getPrefBool(int keyId) {
@@ -247,7 +258,8 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
 
         @Override
         public void run() {
-            pref(R.string.pref_skip_settings_on_start_key).setEnabled(fruaInstalled);
+            pref(R.string.pref_skip_settings_on_start_key).setEnabled(false);
+            pref(R.string.pref_smooth_video_key).setEnabled(false);
             pref(R.string.pref_frua_active_module_key).setEnabled(fruaInstalled);
             if(null != menu) {
                 menu.findItem(R.id.menu_run).setEnabled(fruaInstalled);

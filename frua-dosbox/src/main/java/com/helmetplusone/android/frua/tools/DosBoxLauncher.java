@@ -56,12 +56,16 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
-        Log.e(TAG, "DosBoxLauncher.onCreate");
+//        Log.e(TAG, "DosBoxLauncher.onCreate");
 		super.onCreate(null);
         dosBoxView = new DosBoxView(this);
         registerForContextMenu(dosBoxView);
         setContentView(dosBoxView);
-        init();
+        Bundle bun = getIntent().getExtras();
+        int cycles = bun.getInt("cycles");
+        int frameskip = bun.getInt("frameskip");
+        boolean sound = bun.getBoolean("sound");
+        init(cycles, frameskip, sound);
 	}
 
 	@Override
@@ -95,7 +99,7 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
             dosBoxView.shutdown();
             dosBoxView = null;
         }
-        Log.e(TAG, "Background threads joined");
+//        Log.e(TAG, "Background threads joined");
         if (audioDevice != null) {
             audioDevice.shutDownAudio();
             audioDevice = null;
@@ -113,7 +117,7 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
             }
         }
         destroy();
-        Log.e(TAG, "Going to finish");
+//        Log.e(TAG, "Going to finish");
         super.finish();
         // dosbox does not tolerate process reuse
         android.os.Process.killProcess(android.os.Process.myPid());
@@ -136,7 +140,7 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
             try {
                 audioDevice.initAudio(rate, channels, encoding, bufSize);
             } catch (Exception e) {
-                Log.e(TAG, "Audio init error", e);
+//                Log.e(TAG, "Audio init error", e);
                 audioDevice = null;
             }
         }
@@ -174,8 +178,8 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
      */
 	public static boolean sendNativeKey(int keyCode, boolean down, boolean ctrl, boolean alt, boolean shift) {
         boolean handled = DosboxAndroid.nativeKey(keyCode, boolToInt(down), ctrl, alt, shift);
-        Log.d(TAG, "Key handle result: [" + handled + "], keycode: [" + keyCode + "], down: [" + down + "]," +
-                        " ctrl: [" + ctrl + "], alt: [" + alt + "], shift: [" + shift + "]");
+//        Log.d(TAG, "Key handle result: [" + handled + "], keycode: [" + keyCode + "], down: [" + down + "]," +
+//                        " ctrl: [" + ctrl + "], alt: [" + alt + "], shift: [" + shift + "]");
         return handled && !down;
 	}
 
@@ -185,20 +189,30 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
         return bool ? 1 : 0;
     }
 
-    private void init() {
-        backgroundThread = new Thread(new BackgroundRunnable());
+    private void init(int cycles, int frameskip, boolean sound) {
+        backgroundThread = new Thread(new BackgroundRunnable(cycles, frameskip, sound));
         backgroundThread.start();
         dosBoxView.start();
     }
 
     private class BackgroundRunnable implements Runnable {
+        private final int cycles;
+        private final int frameskip;
+        private final boolean sound;
+
+        private BackgroundRunnable(int cycles, int frameskip, boolean sound) {
+            this.cycles = cycles;
+            this.frameskip = frameskip;
+            this.sound = sound;
+        }
+
         @Override
         public void run() {
             Bitmap bitmap = dosBoxView.getVideo().getBitmap();
             File basedir = getExternalFilesDir(null);
             File conf = new File(basedir, "fruabox.conf");
-            Log.e(TAG, conf.getAbsolutePath() + " : " + conf.exists());
-            dosbox.nativeStart(conf.getAbsolutePath(), bitmap, bitmap.getWidth(), bitmap.getHeight(), 4, 0, 3000, true, true, true);
+//            Log.e(TAG, conf.getAbsolutePath() + " : " + conf.exists());
+            dosbox.nativeStart(conf.getAbsolutePath(), bitmap, bitmap.getWidth(), bitmap.getHeight(), 4, frameskip, cycles, sound, true, true);
         }
     }
 }

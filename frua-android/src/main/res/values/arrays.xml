@@ -2,6 +2,10 @@
 <resources>
     <!-- CPU cycles -->
     <string-array name="pref_cpu_cycles_array">
+        <item>100</item>
+        <item>250</item>
+        <item>500</item>
+        <item>750</item>
         <item>1000</item>
         <item>1500</item>
         <item>2000</item>
@@ -11,9 +15,14 @@
         <item>4000</item>
         <item>4500</item>
         <item>5000</item>
+        <item>6000</item>
+        <item>7000</item>
+        <item>8000</item>
+        <item>9000</item>
     </string-array>
     <!-- frameskip -->
     <string-array name="pref_frameskip_array">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>

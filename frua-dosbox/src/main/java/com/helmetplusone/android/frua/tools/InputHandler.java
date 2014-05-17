@@ -107,7 +107,7 @@ class InputHandler extends Handler {
             default:
                 if (!down || (event.getRepeatCount() == 0)) {
                     int unicode = event.getUnicodeChar();
-                    Log.d(TAG, "Unicode char: [" + (char) unicode + "]");
+//                    Log.d(TAG, "Unicode char: [" + (char) unicode + "]");
                     //locnet, 2012-01-23, filter system generated modifier key, but not hardware key
                     //Log.d("dosbox", "down:" + down + ",isAlt:" + event.isAltPressed() + ",isShift:" + event.isShiftPressed() + ",repeat:" + event.getRepeatCount() + ",unicode:" + event.getUnicodeChar() + ",keycode:" + keyCode + ",flags:"+event.getFlags());
                     if ((event.isAltPressed() || event.isShiftPressed()) && (unicode == 0) && ((event.getFlags() & KeyEvent.FLAG_FROM_SYSTEM) == 0)) {
@@ -187,7 +187,7 @@ class InputHandler extends Handler {
 
     private void sendKey(int keyCode, boolean down) {
         if (down && hasMessages(keyCode)) {
-            Log.d(TAG, "Ignoring repeated down key: [" + keyCode + "]");
+//            Log.d(TAG, "Ignoring repeated down key: [" + keyCode + "]");
         } else {
             boolean handled = sendNativeKey(keyCode, down, ctrl, alt, shift);
             if (handled) {
