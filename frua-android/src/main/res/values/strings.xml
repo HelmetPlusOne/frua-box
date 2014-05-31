@@ -37,6 +37,8 @@
     <string name="pref_cpu_cycles_title">CPU Cycles</string>
     <string name="pref_frameskip_key">pref_frameskip_key</string>
     <string name="pref_frameskip_title">Frameskip Count</string>
+    <string name="pref_fmode_key">pref_fmode_key</string>
+    <string name="pref_fmode_title">Enable F-mode for numbers</string>
     <!-- about -->
     <string name="pref_about_key">pref_about_key</string>
     <string name="pref_about_title">About</string>

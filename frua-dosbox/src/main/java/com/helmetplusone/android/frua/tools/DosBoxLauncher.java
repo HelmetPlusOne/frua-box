@@ -50,6 +50,8 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
 
     private Thread backgroundThread;
 
+    static boolean FMODE = false;
+
     public DosBoxLauncher() {
         this.dosbox = new DosboxAndroid(this);
     }
@@ -65,6 +67,7 @@ public class DosBoxLauncher extends Activity implements DosboxAndroidCallbacks {
         int cycles = bun.getInt("cycles");
         int frameskip = bun.getInt("frameskip");
         boolean sound = bun.getBoolean("sound");
+        FMODE = bun.getBoolean("fmode");
         init(cycles, frameskip, sound);
 	}
 

@@ -45,6 +45,10 @@
                         android:entries="@array/pref_frameskip_array"
                         android:entryValues="@array/pref_frameskip_array"
                         android:defaultValue="2"/>
+        <CheckBoxPreference android:key="@string/pref_fmode_key"
+                            android:title="@string/pref_fmode_title"
+                            android:summary="@string/pref_fmode_title"
+                            android:defaultValue="false"/>
     </PreferenceCategory>
     <!-- about -->
     <PreferenceCategory android:key="@string/pref_about_key"

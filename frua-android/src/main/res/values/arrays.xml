@@ -19,6 +19,9 @@
         <item>7000</item>
         <item>8000</item>
         <item>9000</item>
+        <item>10000</item>
+        <item>12000</item>
+        <item>15000</item>
     </string-array>
     <!-- frameskip -->
     <string-array name="pref_frameskip_array">

@@ -52,6 +52,24 @@ class InputHandler extends Handler {
     static final int KEYCODE_PGDOWN = 93;
     static final int KEYCODE_V = 30258;
     static final int KEYCODE_E = 25889;
+    static final int KEYCODE_1 = 12577;
+    static final int KEYCODE_2 = 12846;
+    static final int KEYCODE_3 = 13104;
+    static final int KEYCODE_4 = 13344;
+    static final int KEYCODE_5 = 13602;
+    static final int KEYCODE_6 = 13859;
+    static final int KEYCODE_7 = 14111;
+    static final int KEYCODE_8 = 14386;
+    static final int KEYCODE_9 = 14622;
+//    static final int KEYCODE_1_UP = 17697;
+//    static final int KEYCODE_2_UP = 21038;
+//    static final int KEYCODE_3_UP = 21552;
+//    static final int KEYCODE_4_UP = 17440;
+//    static final int KEYCODE_5_UP = 17954;
+//    static final int KEYCODE_6_UP = 18211;
+//    static final int KEYCODE_7_UP = 17183;
+//    static final int KEYCODE_8_UP = 22066;
+//    static final int KEYCODE_9_UP = 16926;
 
     //locnet, 2011-05-30, support more key
     static final int KEYCODE_NUM_LOCK = 143;
@@ -87,6 +105,7 @@ class InputHandler extends Handler {
 
     boolean handleKey(int keyCode, final KeyEvent event) {
         boolean down = (event.getAction() == KeyEvent.ACTION_DOWN);
+//        Log.e(TAG, "handleKey, key: [" + keyCode + "], down: [" + down + "]");
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
                 sendKey(KEYCODE_ESCAPE, down);
@@ -189,7 +208,9 @@ class InputHandler extends Handler {
         if (down && hasMessages(keyCode)) {
 //            Log.d(TAG, "Ignoring repeated down key: [" + keyCode + "]");
         } else {
-            boolean handled = sendNativeKey(keyCode, down, ctrl, alt, shift);
+//            Log.e(TAG, "key: [" + keyCode + "]");
+            int key = switchNumToF(keyCode);
+            boolean handled = sendNativeKey(key, down, ctrl, alt, shift);
             if (handled) {
                 ctrl = false;
                 alt = false;
@@ -216,5 +237,21 @@ class InputHandler extends Handler {
             nativeMouse(0, 0, (int) (abs_x * 1000), (int) (abs_y * 1000), MOUSE_ACTION_DOWN, -1);
         }
         return inScreen;
+    }
+
+    int switchNumToF(int keyCode) {
+        if(!DosBoxLauncher.FMODE) return keyCode;
+        switch (keyCode) {
+            case KEYCODE_1: return KeyEvent.KEYCODE_F1;
+            case KEYCODE_2: return KeyEvent.KEYCODE_F2;
+            case KEYCODE_3: return KeyEvent.KEYCODE_F3;
+            case KEYCODE_4: return KeyEvent.KEYCODE_F4;
+            case KEYCODE_5: return KeyEvent.KEYCODE_F5;
+            case KEYCODE_6: return KeyEvent.KEYCODE_F6;
+            case KEYCODE_7: return KeyEvent.KEYCODE_F7;
+            case KEYCODE_8: return KeyEvent.KEYCODE_F8;
+            case KEYCODE_9: return KeyEvent.KEYCODE_F9;
+            default: return keyCode;
+        }
     }
 }

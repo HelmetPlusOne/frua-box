@@ -148,6 +148,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
             bundle.putInt("cycles", getPrefInt(R.string.pref_cpu_cycles_key));
             bundle.putInt("frameskip", getPrefInt(R.string.pref_frameskip_key));
             bundle.putBoolean("sound", getPrefBool(R.string.pref_audio_enabled_key));
+            bundle.putBoolean("fmode", getPrefBool(R.string.pref_fmode_key));
             intent.putExtras(bundle);
             startActivityForResult(intent, 42);
         } catch (Exception e) {
