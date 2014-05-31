@@ -52,15 +52,23 @@ class InputHandler extends Handler {
     static final int KEYCODE_PGDOWN = 93;
     static final int KEYCODE_V = 30258;
     static final int KEYCODE_E = 25889;
-    static final int KEYCODE_1 = 12577;
-    static final int KEYCODE_2 = 12846;
-    static final int KEYCODE_3 = 13104;
-    static final int KEYCODE_4 = 13344;
-    static final int KEYCODE_5 = 13602;
-    static final int KEYCODE_6 = 13859;
-    static final int KEYCODE_7 = 14111;
-    static final int KEYCODE_8 = 14386;
-    static final int KEYCODE_9 = 14622;
+    static final int KEYCODE_W = 30515;
+    static final int KEYCODE_T = 29744;
+    static final int KEYCODE_O = 28459;
+    static final int KEYCODE_F = 26146;
+    static final int KEYCODE_G = 26403;
+    static final int KEYCODE_H = 26660;
+    static final int KEYCODE_J = 27174;
+    static final int KEYCODE_K = 27431;
+//    static final int KEYCODE_1 = 12577;
+//    static final int KEYCODE_2 = 12846;
+//    static final int KEYCODE_3 = 13104;
+//    static final int KEYCODE_4 = 13344;
+//    static final int KEYCODE_5 = 13602;
+//    static final int KEYCODE_6 = 13859;
+//    static final int KEYCODE_7 = 14111;
+//    static final int KEYCODE_8 = 14386;
+//    static final int KEYCODE_9 = 14622;
 //    static final int KEYCODE_1_UP = 17697;
 //    static final int KEYCODE_2_UP = 21038;
 //    static final int KEYCODE_3_UP = 21552;
@@ -208,7 +216,7 @@ class InputHandler extends Handler {
         if (down && hasMessages(keyCode)) {
 //            Log.d(TAG, "Ignoring repeated down key: [" + keyCode + "]");
         } else {
-//            Log.e(TAG, "key: [" + keyCode + "]");
+            Log.e(TAG, "key: [" + keyCode + "]");
             int key = switchNumToF(keyCode);
             boolean handled = sendNativeKey(key, down, ctrl, alt, shift);
             if (handled) {
@@ -242,15 +250,14 @@ class InputHandler extends Handler {
     int switchNumToF(int keyCode) {
         if(!DosBoxLauncher.FMODE) return keyCode;
         switch (keyCode) {
-            case KEYCODE_1: return KeyEvent.KEYCODE_F1;
-            case KEYCODE_2: return KeyEvent.KEYCODE_F2;
-            case KEYCODE_3: return KeyEvent.KEYCODE_F3;
-            case KEYCODE_4: return KeyEvent.KEYCODE_F4;
-            case KEYCODE_5: return KeyEvent.KEYCODE_F5;
-            case KEYCODE_6: return KeyEvent.KEYCODE_F6;
-            case KEYCODE_7: return KeyEvent.KEYCODE_F7;
-            case KEYCODE_8: return KeyEvent.KEYCODE_F8;
-            case KEYCODE_9: return KeyEvent.KEYCODE_F9;
+            case KEYCODE_W: return KeyEvent.KEYCODE_F1;
+            case KEYCODE_T: return KeyEvent.KEYCODE_F2;
+            case KEYCODE_O: return KeyEvent.KEYCODE_F3;
+            case KEYCODE_F: return KeyEvent.KEYCODE_F4;
+            case KEYCODE_G: return KeyEvent.KEYCODE_F5;
+            case KEYCODE_H: return KeyEvent.KEYCODE_F6;
+            case KEYCODE_J: return KeyEvent.KEYCODE_F7;
+            case KEYCODE_K: return KeyEvent.KEYCODE_F8;
             default: return keyCode;
         }
     }
