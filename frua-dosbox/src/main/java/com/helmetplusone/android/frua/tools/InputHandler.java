@@ -51,15 +51,6 @@ class InputHandler extends Handler {
     static final int KEYCODE_PGUP = 92;
     static final int KEYCODE_PGDOWN = 93;
     static final int KEYCODE_V = 30258;
-    static final int KEYCODE_E = 25889;
-    static final int KEYCODE_W = 30515;
-    static final int KEYCODE_T = 29744;
-    static final int KEYCODE_O = 28459;
-    static final int KEYCODE_F = 26146;
-    static final int KEYCODE_G = 26403;
-    static final int KEYCODE_H = 26660;
-    static final int KEYCODE_J = 27174;
-    static final int KEYCODE_K = 27431;
 //    static final int KEYCODE_1 = 12577;
 //    static final int KEYCODE_2 = 12846;
 //    static final int KEYCODE_3 = 13104;
@@ -69,22 +60,22 @@ class InputHandler extends Handler {
 //    static final int KEYCODE_7 = 14111;
 //    static final int KEYCODE_8 = 14386;
 //    static final int KEYCODE_9 = 14622;
-//    static final int KEYCODE_1_UP = 17697;
-//    static final int KEYCODE_2_UP = 21038;
-//    static final int KEYCODE_3_UP = 21552;
-//    static final int KEYCODE_4_UP = 17440;
-//    static final int KEYCODE_5_UP = 17954;
-//    static final int KEYCODE_6_UP = 18211;
-//    static final int KEYCODE_7_UP = 17183;
-//    static final int KEYCODE_8_UP = 22066;
-//    static final int KEYCODE_9_UP = 16926;
+    static final int KEYCODE_1_UP = 17697;
+    static final int KEYCODE_2_UP = 21038;
+    static final int KEYCODE_3_UP = 21552;
+    static final int KEYCODE_4_UP = 17440;
+    static final int KEYCODE_5_UP = 17954;
+    static final int KEYCODE_6_UP = 18211;
+    static final int KEYCODE_7_UP = 17183;
+    static final int KEYCODE_8_UP = 22066;
+    static final int KEYCODE_9_UP = 16926;
 
     //locnet, 2011-05-30, support more key
     static final int KEYCODE_NUM_LOCK = 143;
 
-    private boolean ctrl = false;
-    private boolean alt = false;
-    private boolean shift = false;
+    private final boolean ctrl = false;
+    private final boolean alt = false;
+    private final boolean shift = false;
 
     private final DosBoxView view;
 
@@ -101,9 +92,9 @@ class InputHandler extends Handler {
                 sendNativeKey(KEYCODE_NUM_LOCK, true, ctrl, alt, shift);
                 Utils.threadSleep(BUTTON_TAP_DELAY);
                 sendNativeKey(KEYCODE_NUM_LOCK, false, ctrl, alt, shift);
-                ctrl = false;
-                alt = false;
-                shift = false;
+//                ctrl = false;
+//                alt = false;
+//                shift = false;
                 break;
             default:
                 sendKey(msg.what, false);
@@ -129,6 +120,7 @@ class InputHandler extends Handler {
                 return true;
             case KeyEvent.KEYCODE_MENU:
             case KeyEvent.KEYCODE_HOME:
+            case KeyEvent.KEYCODE_SHIFT_LEFT:
             case KeyEvent.KEYCODE_UNKNOWN:
                 break;
             default:
@@ -216,14 +208,14 @@ class InputHandler extends Handler {
         if (down && hasMessages(keyCode)) {
 //            Log.d(TAG, "Ignoring repeated down key: [" + keyCode + "]");
         } else {
-            Log.e(TAG, "key: [" + keyCode + "]");
             int key = switchNumToF(keyCode);
+//            Log.e(TAG, "key: [" + key + "]");
             boolean handled = sendNativeKey(key, down, ctrl, alt, shift);
-            if (handled) {
-                ctrl = false;
-                alt = false;
-                shift = false;
-            }
+//            if (handled) {
+//                ctrl = false;
+//                alt = false;
+//                shift = false;
+//            }
         }
     }
 
@@ -250,14 +242,15 @@ class InputHandler extends Handler {
     int switchNumToF(int keyCode) {
         if(!DosBoxLauncher.FMODE) return keyCode;
         switch (keyCode) {
-            case KEYCODE_W: return KeyEvent.KEYCODE_F1;
-            case KEYCODE_T: return KeyEvent.KEYCODE_F2;
-            case KEYCODE_O: return KeyEvent.KEYCODE_F3;
-            case KEYCODE_F: return KeyEvent.KEYCODE_F4;
-            case KEYCODE_G: return KeyEvent.KEYCODE_F5;
-            case KEYCODE_H: return KeyEvent.KEYCODE_F6;
-            case KEYCODE_J: return KeyEvent.KEYCODE_F7;
-            case KEYCODE_K: return KeyEvent.KEYCODE_F8;
+            case KEYCODE_1_UP: return KeyEvent.KEYCODE_F1;
+            case KEYCODE_2_UP: return KeyEvent.KEYCODE_F2;
+            case KEYCODE_3_UP: return KeyEvent.KEYCODE_F3;
+            case KEYCODE_4_UP: return KeyEvent.KEYCODE_F4;
+            case KEYCODE_5_UP: return KeyEvent.KEYCODE_F5;
+            case KEYCODE_6_UP: return KeyEvent.KEYCODE_F6;
+            case KEYCODE_7_UP: return KeyEvent.KEYCODE_F7;
+            case KEYCODE_8_UP: return KeyEvent.KEYCODE_F8;
+            case KEYCODE_9_UP: return KeyEvent.KEYCODE_F9;
             default: return keyCode;
         }
     }
