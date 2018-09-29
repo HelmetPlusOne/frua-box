@@ -71,6 +71,16 @@ Bitu CPU_PrefetchQueueSize=0;
 void CPU_Core_Full_Init(void);
 void CPU_Core_Normal_Init(void);
 void CPU_Core_Simple_Init(void);
+#if (C_DYNAMIC_X86)
+void CPU_Core_Dyn_X86_Init(void);
+void CPU_Core_Dyn_X86_Cache_Init(bool enable_cache);
+void CPU_Core_Dyn_X86_Cache_Close(void);
+void CPU_Core_Dyn_X86_SetFPUMode(bool dh_fpu);
+#elif (C_DYNREC)
+void CPU_Core_Dynrec_Init(void);
+void CPU_Core_Dynrec_Cache_Init(bool enable_cache);
+void CPU_Core_Dynrec_Cache_Close(void);
+#endif
 
 /* In debug mode exceptions are tested and dosbox exits when 
  * a unhandled exception state is detected. 
@@ -1560,6 +1570,17 @@ void CPU_SET_CRX(Bitu cr,Bitu value) {
 				} else {
 					GFX_SetTitle(-1,-1,false);
 				}
+#if (C_DYNAMIC_X86)
+				if (CPU_AutoDetermineMode&CPU_AUTODETERMINE_CORE) {
+					CPU_Core_Dyn_X86_Cache_Init(true);
+					cpudecoder=&CPU_Core_Dyn_X86_Run;
+				}
+#elif (C_DYNREC)
+				if (CPU_AutoDetermineMode&CPU_AUTODETERMINE_CORE) {
+					CPU_Core_Dynrec_Cache_Init(true);
+					cpudecoder=&CPU_Core_Dynrec_Run;
+				}
+#endif
 				CPU_AutoDetermineMode<<=CPU_AUTODETERMINE_SHIFT;
 			} else {
 				cpu.pmode=false;
@@ -2198,6 +2219,11 @@ public:
 		CPU_Core_Normal_Init();
 		CPU_Core_Simple_Init();
 		CPU_Core_Full_Init();
+#if (C_DYNAMIC_X86)
+		CPU_Core_Dyn_X86_Init();
+#elif (C_DYNREC)
+		CPU_Core_Dynrec_Init();
+#endif
 		MAPPER_AddHandler(CPU_CycleDecrease,MK_f11,MMOD1,"cycledown","Dec Cycles");
 		MAPPER_AddHandler(CPU_CycleIncrease,MK_f12,MMOD1,"cycleup"  ,"Inc Cycles");
 		Change_Config(configuration);	
@@ -2298,7 +2324,30 @@ public:
 			cpudecoder=&CPU_Core_Full_Run;
 		} else if (core == "auto") {
 			cpudecoder=&CPU_Core_Normal_Run;
+#if (C_DYNAMIC_X86)
+			CPU_AutoDetermineMode|=CPU_AUTODETERMINE_CORE;
 		}
+		else if (core == "dynamic") {
+			cpudecoder=&CPU_Core_Dyn_X86_Run;
+			CPU_Core_Dyn_X86_SetFPUMode(true);
+		} else if (core == "dynamic_nodhfpu") {
+			cpudecoder=&CPU_Core_Dyn_X86_Run;
+			CPU_Core_Dyn_X86_SetFPUMode(false);
+#elif (C_DYNREC)
+			CPU_AutoDetermineMode|=CPU_AUTODETERMINE_CORE;
+		}
+		else if (core == "dynamic") {
+			cpudecoder=&CPU_Core_Dynrec_Run;
+#else
+
+#endif
+		}
+
+#if (C_DYNAMIC_X86)
+		CPU_Core_Dyn_X86_Cache_Init((core == "dynamic") || (core == "dynamic_nodhfpu"));
+#elif (C_DYNREC)
+		CPU_Core_Dynrec_Cache_Init( core == "dynamic" );
+#endif
 
 		CPU_ArchitectureType = CPU_ARCHTYPE_MIXED;
 		std::string cputype(section->Get_string("cputype"));
@@ -2355,6 +2404,11 @@ public:
 static CPU * test;
 
 void CPU_ShutDown(Section* sec) {
+#if (C_DYNAMIC_X86)
+	CPU_Core_Dyn_X86_Cache_Close();
+#elif (C_DYNREC)
+	CPU_Core_Dynrec_Cache_Close();
+#endif
 	delete test;
 }
 

@@ -13,7 +13,7 @@ public class FruaBoxConf {
             "#frameskip=0\n" +
             "\n" +
             "[cpu]\n" +
-            "core=simple\n" +
+            "core=dynamic\n" +
             "cputype=auto\n" +
             "#cycles=auto 1500 100% limit 3500\n" +
             "\n" +
