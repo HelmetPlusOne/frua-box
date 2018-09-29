@@ -22,6 +22,11 @@
         <item>10000</item>
         <item>12000</item>
         <item>15000</item>
+        <item>20000</item>
+        <item>25000</item>
+        <item>30000</item>
+        <item>40000</item>
+        <item>50000</item>
     </string-array>
     <!-- frameskip -->
     <string-array name="pref_frameskip_array">
