@@ -140,7 +140,10 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
     private void start() {
         try {
             String fruadir = getPrefStr(R.string.pref_frua_directory_key);
-            String conf = FruaBoxConf.CONF.replace("{{fruapath}}", fruadir);
+            String cpucore = getPrefStr(R.string.pref_cpu_cores_key);
+            String conf = FruaBoxConf.CONF
+                    .replace("{{fruapath}}", fruadir)
+                    .replace("{{cpucore}}", cpucore);
             File confFile = new File(getExternalFilesDir(null), "fruabox.conf");
             writeStringToFile(confFile, conf);
             Intent intent = new Intent(this, DosBoxLauncher.class);

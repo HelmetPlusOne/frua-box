@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- CPU cores -->
+    <string-array name="pref_cpu_cores_array">
+        <item>auto</item>
+        <item>simple</item>
+        <item>normal</item>
+        <item>dynamic</item>
+    </string-array>
     <!-- CPU cycles -->
     <string-array name="pref_cpu_cycles_array">
         <item>100</item>

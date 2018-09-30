@@ -33,6 +33,8 @@
     <!-- performance settings -->
     <string name="pref_performance_key">pref_performance_key</string>
     <string name="pref_performance_title">Performance Settins</string>
+    <string name="pref_cpu_cores_key">pref_cpu_core_key</string>
+    <string name="pref_cpu_cores_title">CPU Core</string>
     <string name="pref_cpu_cycles_key">pref_cpu_cycles_key</string>
     <string name="pref_cpu_cycles_title">CPU Cycles</string>
     <string name="pref_frameskip_key">pref_frameskip_key</string>

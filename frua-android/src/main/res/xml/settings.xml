@@ -35,6 +35,11 @@
     <!-- performance settings -->
     <PreferenceCategory android:key="@string/pref_performance_key"
                         android:title="@string/pref_performance_title">
+        <ListPreference android:key="@string/pref_cpu_cores_key"
+                        android:title="@string/pref_cpu_cores_title"
+                        android:entries="@array/pref_cpu_cores_array"
+                        android:entryValues="@array/pref_cpu_cores_array"
+                        android:defaultValue="auto"/>
         <ListPreference android:key="@string/pref_cpu_cycles_key"
                         android:title="@string/pref_cpu_cycles_title"
                         android:entries="@array/pref_cpu_cycles_array"
@@ -44,7 +49,7 @@
                         android:title="@string/pref_frameskip_title"
                         android:entries="@array/pref_frameskip_array"
                         android:entryValues="@array/pref_frameskip_array"
-                        android:defaultValue="2"/>
+                        android:defaultValue="0"/>
         <CheckBoxPreference android:key="@string/pref_fmode_key"
                             android:title="@string/pref_fmode_title"
                             android:summary="@string/pref_fmode_title"
